@@ -59,7 +59,7 @@ class AddProject extends Component {
                   <div className="form-group">
                     <input
                       type="text"
-                      className={classnames("form-control form-control-lg ", {
+                      className={classnames("form-control form-control-lg", {
                         "is-invalid": errors.projectName
                       })}
                       placeholder="Project Name"
@@ -76,7 +76,7 @@ class AddProject extends Component {
                   <div className="form-group">
                     <input
                       type="text"
-                      className={classnames("form-control form-control-lg ", {
+                      className={classnames("form-control form-control-lg", {
                         "is-invalid": errors.projectIdentifier
                       })}
                       placeholder="Unique Project ID"
@@ -92,7 +92,7 @@ class AddProject extends Component {
                   </div>
                   <div className="form-group">
                     <textarea
-                      className={classnames("form-control form-control-lg ", {
+                      className={classnames("form-control form-control-lg", {
                         "is-invalid": errors.description
                       })}
                       placeholder="Project Description"
