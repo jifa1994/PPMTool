@@ -16,19 +16,22 @@ import org.springframework.security.config.http.SessionCreationPolicy;
         prePostEnabled = true
 )
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Autowired
-    private JwtAuthenticationEntryPoint unathorizedHandler;
+    private JwtAuthenticationEntryPoint unauthorizedHandler;
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable()
-                .exceptionHandling().authenticationEntryPoint(unathorizedHandler).and()
+                .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
-                .headers() .frameOptions().sameOrigin() // To enable H2 database
+                .headers().frameOptions().sameOrigin() //To enable H2 Database
                 .and()
                 .authorizeRequests()
-                .antMatchers("/",
+                .antMatchers(
+                        "/",
                         "/favicon.ico",
                         "/**/*.png",
                         "/**/*.gif",
@@ -38,7 +41,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/**/*.css",
                         "/**/*.js"
                 ).permitAll()
+                .antMatchers("/api/users/**").permitAll()
                 .anyRequest().authenticated();
     }
 }
+
+
+
+
+
 
